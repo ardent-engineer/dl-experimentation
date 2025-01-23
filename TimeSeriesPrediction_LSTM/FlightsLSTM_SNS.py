@@ -30,7 +30,6 @@ Xy_scaled = scaler.fit_transform(Xy.reshape(-1, 1))
 
 # %% Data Restructuring
 #%% train/test split
-# TODO: create train and test set (keep last 12 months for testing, everything else for training)
 X = []
 y = []
 for i in range(Xy_scaled.shape[0]-10):
@@ -41,7 +40,6 @@ X = torch.from_numpy(np.array(y))
 X_train, y_train = X[:-12], y[:-12]
 X_test, y_test = X[-12:], y[-12:]
 # %% 
-#  TODO: create dataset and dataloader
 class FlightDataset(Dataset):
     def __init__(self, X, y):
         self.X = X
@@ -58,7 +56,6 @@ test_set = FlightDataset(X_test, y_test)
 train_loader = DataLoader(dataset=train_set, shuffle=True, batch_size=16)
 test_loader = DataLoader(dataset=test_set, shuffle=True, batch_size=16)
 # %%
-# TODO: set up the model class
 class FlightModel(nn.Module):
     def __init__(self, input_size, output_size):
         super().__init__()
